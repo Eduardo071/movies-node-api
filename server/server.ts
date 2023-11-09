@@ -1,4 +1,6 @@
+import { PrismaClient } from "@prisma/client";
 import express from "express";
+const prisma = new PrismaClient();
 
 
 const port = 2712;
@@ -12,8 +14,20 @@ const app = express();
 // REMOVER UM FILME
 // FILTRAR FILMES POR UM GÊNERO
 
-app.get("/movies", (req, res) => {
-	res.send("Listagem de filmes");
+app.get("/movies", async (req, res) => {
+	const movies = await prisma.movies.findMany();
+	res.json(movies);
+});
+
+app.get("/movies/:movieId", async (req, res) => {
+	const movieId = parseInt(req.params.movieId);
+	const movie = await prisma.movies.findUnique({where: {id: movieId}});
+
+	if(movie){
+		res.json(movie);
+	}else{
+		res.status(404).json({error: "filme não encontrado"});
+	}
 });
 
 app.post("/movies", (req, res) => {
