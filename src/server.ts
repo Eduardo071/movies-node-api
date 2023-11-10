@@ -3,7 +3,7 @@ import express from "express";
 const prisma = new PrismaClient();
 
 
-const port = process.env.PORT || 5432;
+const port = 5432;
 const app = express();
 
 // GET, POST, PUT, PATCH, DELETE
