@@ -1,4 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const { PrismaClient } = require("@prisma/client");
 import express from "express";
 const prisma = new PrismaClient();
 
