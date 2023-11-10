@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "start": "node server.ts",
   "scripts": {
-    "dev": "npx tsx watch server/server.ts"
+    "dev": "npx tsx watch server.ts"
   },
   "author": "",
   "license": "ISC",

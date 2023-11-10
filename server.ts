@@ -126,4 +126,3 @@ app.get("/movies/genre/:genre", async (req, res) => {
 
 
 app.listen(port, () => console.log(`Servidor em execução na porta ${port}`));
-module.exports = app;
