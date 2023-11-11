@@ -15,12 +15,6 @@ const app = express();
 // REMOVER UM FILME - FEITO
 // FILTRAR FILMES POR UM GÊNERO - FEITO
 
-app.use((_, res, next) => { 
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Origin", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-});
-
 app.use(cors());
 
 
