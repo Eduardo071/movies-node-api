@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import express from "express";
+import cors from "cors";
 const prisma = new PrismaClient();
 
 
@@ -13,6 +14,12 @@ const app = express();
 // ATUALIZAR DADOS DE UM FILME - FEITO
 // REMOVER UM FILME - FEITO
 // FILTRAR FILMES POR UM GÊNERO - FEITO
+
+app.use((_, res, next) => { 
+	res.header("Access-Control-Allow-Origin", "*");
+	app.use(cors());
+	next();
+});
 
 app.get("/movies", async (_, res) => {
 	const movies = await prisma.movie.findMany({
