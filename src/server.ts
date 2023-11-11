@@ -17,9 +17,12 @@ const app = express();
 
 app.use((_, res, next) => { 
 	res.header("Access-Control-Allow-Origin", "*");
-	app.use(cors());
+	res.header("Access-Control-Allow-Origin", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
 });
+
+app.use(cors());
+
 
 app.get("/movies", async (_, res) => {
 	const movies = await prisma.movie.findMany({
