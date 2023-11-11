@@ -1,22 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model Movie {
+  id           Int       @id @default(autoincrement())
   name         String?   @db.VarChar(100)
   tomato_rate  Int?
   oscar_count  Int?
   release_date DateTime? @db.Date
   duration     Int?
-  language     String?   @db.VarChar(50)
-  file_path    String?   @db.VarChar(255)
-  id           Int       @id @default(autoincrement())
+  language     String?   @db.VarChar(10)
+  file_path    String?   @db.VarChar(100)
   genres       String?   @db.VarChar(100)
+  external_id  Int?
 
   @@map("movies")
 }

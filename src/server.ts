@@ -51,7 +51,8 @@ app.post("/movies", async (req, res) => {
 		duration,
 		language,
 		file_path,
-		genres} = req.body;
+		genres,
+		external_id} = req.body;
 	try{
 
 		const movieWithSameTitle = await prisma.movie.findFirst({
@@ -73,7 +74,8 @@ app.post("/movies", async (req, res) => {
 				duration: duration,
 				language: language,
 				file_path: file_path,
-				genres: genres
+				genres: genres,
+				external_id: external_id
 			}
 		});
 	}catch(err){
